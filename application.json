@@ -11,8 +11,7 @@
                     "assets": {
                         "top": {
                             "css": [
-                                "http://yui.yahooapis.com/3.4.1/build/reset/reset-min.css",
-                                "http://yui.yahooapis.com/3.4.1/build/fonts/fonts-min.css"
+                                "/static/results/assets/styles.css"
                             ]
                         }
                     }

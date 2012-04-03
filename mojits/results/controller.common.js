@@ -24,7 +24,10 @@ YUI.add('twitter.results.controller', function (Y, NAME) {
          *        to the Mojito API.
          */
         search: function(ac) {
-            Y.mojito.models.twitter.search('jsconf', function (err, tweets) {
+            var page = ac.params.url('next');
+            page = parseInt(page, 10) || 1;
+
+            Y.mojito.models.twitter.search('jsconf', page, function (err, tweets) {
                 var data = {
                     tweets: []
                 };
@@ -38,7 +41,16 @@ YUI.add('twitter.results.controller', function (Y, NAME) {
                     Y.log(v);
                     data.tweets.push({
                         'author': v.from_user,
-                        'text': v.text
+                        'text': v.text,
+                        'profile_image_url': v.profile_image_url,
+                        'from_user_id': v.from_user_id,
+                        'from_user': v.from_user,
+                        'id_str': v.id_str,
+                        'created_at':v.created_at,
+                        'to_user': v.to_user || "",
+                        'in_reply_to_status_id_str': v.in_reply_to_status_id_str || "",
+                        'from_user_name': v.from_user_name,
+                        'to_user_id': v.to_user_id
                     });
                 });
 

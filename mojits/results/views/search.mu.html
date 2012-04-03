@@ -1,9 +1,21 @@
 <div id="{{mojit_view_id}}" class="results">
-  <ul>
+  <ul class="simpleList">
 {{#tweets}}
     <li>
-      <div class="author">{{author}}</div>
-      <div class="text">{{text}}</div>
+      <div class="media">
+        <a class="img icon" href="http://twitter.com/#!/{{from_user_id}}"><img src="{{profile_image_url}}" height="50" width="50"></a>
+        <div class="mediaBd">
+            <h2 class="h4 floatL"><a href="http://twitter.com/#!/{{from_user_id}}">{{from_user_name}}</a></h2>
+            <p>{{text}}</p>
+            <p class="date">
+                <a href="http://twitter.com/#!/{{from_user}}/status/{{id_str}}">{{created_at}}</a> 
+                <!-- if this is a reply -->
+                {{#to_user_id}}in reply to 
+                    <a href="http://twitter.com/#!/{{to_user}}/status/{{in_reply_to_status_id_str}}">{{to_user}}</a>
+                {{/to_user_id}}
+            </p>
+        </div>
+      </div>
     </li>
 {{/tweets}}
   </ul>
